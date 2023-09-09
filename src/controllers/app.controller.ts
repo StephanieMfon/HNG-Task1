@@ -18,6 +18,9 @@ export default class AppController {
 			current_day: today,
 			utc_time: utc_time,
 			track: track,
+			github_file_url:
+				"https://github.com/StephanieMfon/HNG-Task1/blob/main/src/app.ts",
+			github_repo_url: "https://github.com/StephanieMfon/HNG-Task1",
 			status: "success",
 		});
 	}
