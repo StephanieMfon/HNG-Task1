@@ -1,0 +1,24 @@
+import { Request, Response } from "express";
+
+const options: object = { weekday: "long" };
+const day = new Date();
+
+export default class AppController {
+	static async handelEndpoint(
+		req: Request<{ slack_name: "string"; track: "string" }>,
+		res: Response
+	) {
+		const slack_name = req.query.slack_name;
+		const today = new Intl.DateTimeFormat("en-US", options).format(day);
+		const track = req.query.track;
+		const utc_time = new Date().toISOString();
+
+		return res.status(200).json({
+			slack_name: slack_name,
+			current_day: today,
+			utc_time: utc_time,
+			track: track,
+			status: "success",
+		});
+	}
+}
