@@ -25,15 +25,27 @@ export default class AppController {
 		const track = req.query.track;
 		const utc_time = new Date(
 			Date.UTC(
-				new Date().getUTCFullYear(),
-				new Date().getUTCMonth(),
-				new Date().getUTCDate(),
-				new Date().getUTCHours(),
-				new Date().getUTCMinutes(),
-				new Date().getUTCSeconds(),
-				new Date().getUTCMilliseconds()
+				new Date().getFullYear(),
+				new Date().getMonth(),
+				new Date().getDate(),
+				new Date().getHours(),
+				new Date().getMinutes(),
+				new Date().getSeconds(),
+				new Date().getMilliseconds()
 			)
 		).toISOString();
+
+		// const utc_time = new Date(
+		// 	Date.UTC(
+		// 		new Date().getUTCFullYear(),
+		// 		new Date().getUTCMonth(),
+		// 		new Date().getUTCDate(),
+		// 		new Date().getUTCHours(),
+		// 		new Date().getUTCMinutes(),
+		// 		new Date().getUTCSeconds(),
+		// 		new Date().getUTCMilliseconds()
+		// 	)
+		// ).toISOString();
 
 		return res.status(200).json({
 			slack_name: slack_name,
