@@ -36,7 +36,7 @@ export default class AppController {
 		// 	)
 		// ).toISOString();
 
-		const utc_time = moment.utc().format;
+		const utc_time = moment.utc().format();
 		return res.status(200).json({
 			slack_name: slack_name,
 			current_day: dayNames[getDay],
