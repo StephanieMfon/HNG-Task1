@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import moment from "moment";
 
 const options: object = { weekday: "long" };
 const day = new Date();
@@ -23,30 +24,19 @@ export default class AppController {
 
 		const slack_name = req.query.slack_name;
 		const track = req.query.track;
-		const utc_time = new Date(
-			Date.UTC(
-				new Date().getFullYear(),
-				new Date().getMonth(),
-				new Date().getDate(),
-				new Date().getHours(),
-				new Date().getMinutes(),
-				new Date().getSeconds(),
-				new Date().getMilliseconds()
-			)
-		).toISOString();
-
 		// const utc_time = new Date(
 		// 	Date.UTC(
-		// 		new Date().getUTCFullYear(),
-		// 		new Date().getUTCMonth(),
-		// 		new Date().getUTCDate(),
-		// 		new Date().getUTCHours(),
-		// 		new Date().getUTCMinutes(),
-		// 		new Date().getUTCSeconds(),
-		// 		new Date().getUTCMilliseconds()
+		// 		new Date().getFullYear(),
+		// 		new Date().getMonth(),
+		// 		new Date().getDate(),
+		// 		new Date().getHours(),
+		// 		new Date().getMinutes(),
+		// 		new Date().getSeconds(),
+		// 		new Date().getMilliseconds()
 		// 	)
 		// ).toISOString();
 
+		const utc_time = moment.utc().format;
 		return res.status(200).json({
 			slack_name: slack_name,
 			current_day: dayNames[getDay],
