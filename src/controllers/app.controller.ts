@@ -22,9 +22,18 @@ export default class AppController {
 		];
 
 		const slack_name = req.query.slack_name;
-		// const today = new Intl.DateTimeFormat("en-US", options).format(day);
 		const track = req.query.track;
-		const utc_time = new Date().toISOString();
+		const utc_time = new Date(
+			Date.UTC(
+				new Date().getUTCFullYear(),
+				new Date().getUTCMonth(),
+				new Date().getUTCDate(),
+				new Date().getUTCHours(),
+				new Date().getUTCMinutes(),
+				new Date().getUTCSeconds(),
+				new Date().getUTCMilliseconds()
+			)
+		).toISOString();
 
 		return res.status(200).json({
 			slack_name: slack_name,
